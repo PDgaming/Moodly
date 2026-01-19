@@ -1,0 +1,13 @@
+{
+  "name": "moodio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build"
+  },
+  "packageManager": "pnpm@10.28.1",
+  "dependencies": {
+    "hono": "^4.11.4"
+  }
+}

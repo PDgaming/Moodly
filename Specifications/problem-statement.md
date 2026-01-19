@@ -5,9 +5,9 @@ Building a free and open source mood tracking app.
 Get Started.
 
 ## Task list:
-- [ ] Monorepo setup
-- [ ] Shared package
-- [ ] Backend (API) setup
-- [ ] Frontend (Web) setup
-- [ ] Workspace wiring
+- [x] Monorepo setup
+- [x] Shared package
+- [x] Backend (API) setup
+- [x] Frontend (Web) setup
+- [x] Workspace wiring
 - [ ] Cloudflare deployment
