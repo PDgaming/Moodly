@@ -8,13 +8,19 @@
  * @module
  */
 
+import type * as activities from "../activities.js";
+import type * as moods from "../moods.js";
+
 import type {
   ApiFromModules,
   FilterApi,
   FunctionReference,
 } from "convex/server";
 
-declare const fullApi: ApiFromModules<{}>;
+declare const fullApi: ApiFromModules<{
+  activities: typeof activities;
+  moods: typeof moods;
+}>;
 
 /**
  * A utility for referencing Convex functions in your app's public API.
