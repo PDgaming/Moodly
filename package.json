@@ -38,5 +38,10 @@
 		"typescript-eslint": "^8.48.1",
 		"vite": "^7.2.6",
 		"wrangler": "^4.56.0"
+	},
+	"dependencies": {
+		"@auth/sveltekit": "^1.11.1",
+		"convex": "^1.31.5",
+		"convex-svelte": "^0.0.12"
 	}
 }

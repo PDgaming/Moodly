@@ -6,5 +6,5 @@ Building a free and open source mood tracking app.
 2. Switch to Convex
 
 ## Task list:
-- [ ] Install and setup Authjs
+- [x] Install and setup Authjs
 - [ ] Install and setup convex
