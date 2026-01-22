@@ -1,5 +1,5 @@
 import { AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET, AUTH_SECRET } from '$env/static/private';
-import { client } from '$lib/convex';
+import { convexHttpClient } from '$lib/convex';
 import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/sveltekit/providers/google';
 import { api } from './convex/_generated/api';
@@ -18,7 +18,7 @@ export const { handle } = SvelteKitAuth({
 			if (!user.email || !user.name || !user.image || !account) return false;
 
 			try {
-				await client.mutation(api.user.addUser, {
+				await convexHttpClient.mutation(api.user.addUser, {
 					name: user.name,
 					email: user.email,
 					picture: user.image

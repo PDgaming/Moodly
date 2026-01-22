@@ -1,13 +1,11 @@
 <script lang="ts">
-	import { client } from '$lib/convex.js';
+	import { getClient } from '$lib/convex.js';
 	import { signIn } from '@auth/sveltekit/client';
 	import { api } from '../convex/_generated/api.js';
 	import { useQuery } from 'convex-svelte';
 
 	const { data } = $props();
 	let userImage = $state('');
-
-	const updateActivities = client.mutation(api.defaults.populateDefaultActivities, {});
 
 	const moods = useQuery(api.moods.getMoods, {});
 	let activities = $state(useQuery(api.activities.getActivities, {}));
@@ -20,6 +18,11 @@
 			activities = useQuery(api.activities.getActivities, { email: data.session?.user.email });
 		} else {
 			activities = useQuery(api.activities.getActivities, {});
+		}
+
+		const client = getClient();
+		if (client) {
+			const updateActivities = client.mutation(api.defaults.populateDefaultActivities, {});
 		}
 	});
 </script>
