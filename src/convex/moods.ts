@@ -26,7 +26,7 @@ export const createMood = mutation({
 export const getMoods = query({
 	args: {},
 	handler: async (ctx, args) => {
-		const moods = await ctx.db.query('moods').take(4);
+		const moods = await ctx.db.query('moods').collect();
 
 		return moods;
 	}

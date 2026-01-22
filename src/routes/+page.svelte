@@ -1,11 +1,27 @@
 <script lang="ts">
+	import { client } from '$lib/convex.js';
 	import { signIn } from '@auth/sveltekit/client';
-	import { useQuery } from 'convex-svelte';
 	import { api } from '../convex/_generated/api.js';
+	import { useQuery } from 'convex-svelte';
 
 	const { data } = $props();
+	let userImage = $state('');
+
+	const updateActivities = client.mutation(api.defaults.populateDefaultActivities, {});
 
 	const moods = useQuery(api.moods.getMoods, {});
+	let activities = $state(useQuery(api.activities.getActivities, {}));
+
+	$effect(() => {
+		if (data.session?.user?.image) {
+			userImage = data.session?.user.image;
+		}
+		if (data.session?.user?.email) {
+			activities = useQuery(api.activities.getActivities, { email: data.session?.user.email });
+		} else {
+			activities = useQuery(api.activities.getActivities, {});
+		}
+	});
 </script>
 
 <nav>
@@ -18,7 +34,7 @@
 			>
 		</div>
 	{:else}
-		<img src={data.session?.user?.image ?? 'https://i.pravatar.cc/300'} alt="User Avatar" />
+		<img src={userImage} alt="User Avatar" />
 	{/if}
 	<h1 class="text-5xl">Moodio</h1>
 	<p>A mood tracker for your moods</p>
@@ -30,6 +46,14 @@
 		{#each moods.data as mood}
 			<div class="mood">
 				<div class="mood-name">{mood.name}</div>
+			</div>
+		{/each}
+	</div>
+	<!-- List Activities -->
+	<div class="activities">
+		{#each activities.data as activity}
+			<div class="activity">
+				<div class="activity-name">{activity.name}</div>
 			</div>
 		{/each}
 	</div>
