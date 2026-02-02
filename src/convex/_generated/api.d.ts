@@ -11,6 +11,7 @@
 import type * as activities from "../activities.js";
 import type * as categories from "../categories.js";
 import type * as defaults from "../defaults.js";
+import type * as migrations_migrateActivities from "../migrations/migrateActivities.js";
 import type * as moods from "../moods.js";
 import type * as user from "../user.js";
 
@@ -24,6 +25,7 @@ declare const fullApi: ApiFromModules<{
   activities: typeof activities;
   categories: typeof categories;
   defaults: typeof defaults;
+  "migrations/migrateActivities": typeof migrations_migrateActivities;
   moods: typeof moods;
   user: typeof user;
 }>;

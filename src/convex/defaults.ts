@@ -102,6 +102,7 @@ export const populateDefaultActivities = mutation({
 				activity.category = categoryId._id;
 				await ctx.db.insert('defaultActivities', {
 					...activity,
+					order: categoryId.order,
 					category: categoryId._id
 				});
 			}

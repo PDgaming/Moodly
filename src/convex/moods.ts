@@ -7,7 +7,8 @@ export const createMood = mutation({
 		value: v.number(),
 		color: v.string(),
 		icon: v.optional(v.string()),
-		order: v.number()
+		order: v.number(),
+		migrationId: v.number()
 	},
 	handler: async (ctx, args) => {
 		const existingMood = await ctx.db
